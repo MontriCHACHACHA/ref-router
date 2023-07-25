@@ -11,11 +11,9 @@ import Menu from "./Menu.js";
 import Foodlist from "./FoodList ";
 import { useState } from "react";
 
-
 export function Layout() {
   return (
     <nav className="bg-warning p-3 mb-3 text-left">
-      
       <NavLink
         to="/"
         className="link px-2"
@@ -54,14 +52,13 @@ export function Layout() {
 }
 
 function Index() {
-
   return (
     <>
       <Menu />
       <u>
         <h4>
           <center>
-            อาหารพื้นเมืองที่มีสรรพคุณต่อสุขภาพตามวิถีภูมิปัญญาท้องถิ่นของจังหวัดอุบลราชธานี
+            อาหารพื้นเมืองที่มีสรรพคุณต่อสุขภาพตามวิถีภูมิปัญญาท้องถิ่นของจังหวัดอุบล
           </center>
         </h4>
       </u>
@@ -69,7 +66,7 @@ function Index() {
       <center>
         <tr>
           <td>
-            <Foodlist/>
+            <Foodlist />
           </td>
           <td>
             <Foodlist />
@@ -107,7 +104,6 @@ function Product() {
             <th>พลังงานที่ได้รับ</th>
             <th className="text-center">เลือกเมนูนี้</th>
           </tr>
-        
         </thead>
         <tbody>
           {data.map((item, i) => {
