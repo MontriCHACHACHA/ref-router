@@ -1,63 +1,84 @@
 import React, { useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import "./Menu.js";
+import "./FoodList ";
 import { Button, Container, Table } from "react-bootstrap";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import Contact from "./Contact";
+import { isVisible } from "@testing-library/user-event/dist/utils";
+import Menu from "./Menu.js";
+import Foodlist from "./FoodList ";
+import { useState } from "react";
+
 
 export function Layout() {
   return (
-    <nav className="bg-secondary p-2 mb-3 text-center">
+    <nav className="bg-warning p-3 mb-3 text-left">
+      
       <NavLink
         to="/"
         className="link px-2"
         style={({ isActive }) => {
           return {
-            textDecoration: isActive ? "none" : "underline",
+            textDecoration: isVisible ? "none" : "underline",
           };
         }}
       >
-        Main
+        หน้าแรก
       </NavLink>
       <NavLink
         to="/Product"
         className="link px-2"
         style={({ isActive }) => {
           return {
-            textDecoration: isActive ? "none" : "underline",
+            textDecoration: isVisible ? "none" : "underline",
           };
         }}
       >
-        Product
+        ตารางเทียบแคลอรี
       </NavLink>
       <NavLink
         to="/Contact"
         className="link px-2"
         style={({ isActive }) => {
           return {
-            textDecoration: isActive ? "none" : "underline",
+            textDecoration: isVisible ? "none" : "underline",
           };
         }}
       >
-        Contact
+        ผู้จัดทำ
       </NavLink>
     </nav>
   );
 }
 
 function Index() {
-  const header1 = useRef();
+
   return (
     <>
-      <Layout />
-      <h3 ref={header1}>Hello</h3>
-      <Button
-        onClick={() => {
-          header1.current.innerHTML = "React";
-        }}
-      >
-        Click Me
-      </Button>
+      <Menu />
+      <u>
+        <h4>
+          <center>
+            อาหารพื้นเมืองที่มีสรรพคุณต่อสุขภาพตามวิถีภูมิปัญญาท้องถิ่นของจังหวัดอุบลราชธานี
+          </center>
+        </h4>
+      </u>
+
+      <center>
+        <tr>
+          <td>
+            <Foodlist/>
+          </td>
+          <td>
+            <Foodlist />
+          </td>
+          <td>
+            <Foodlist />
+          </td>
+        </tr>
+      </center>
     </>
   );
 }
@@ -71,23 +92,22 @@ function Product() {
   };
 
   const data = [
-    ["กางเกงยีนส์", 1200],
-    ["เสื้อยืด", 350],
-    ["กางเกงขาสั้น", 450],
-    ["หมวก", 500],
+    ["ลาบปลาคัง", 250],
+    ["ลาบปลาคัง2", 200],
+    ["ลาบปลาคัง3", 300],
   ];
 
   return (
     <>
-      <Layout />
-      <h4>Product</h4>
+      <Menu />
       <Table striped bordered hover className="my-3" ref={table}>
         <thead>
           <tr>
-            <th>Product Name</th>
-            <th>Price</th>
-            <th className="text-center">Delete</th>
+            <th>เมนูอาหาร</th>
+            <th>พลังงานที่ได้รับ</th>
+            <th className="text-center">เลือกเมนูนี้</th>
           </tr>
+        
         </thead>
         <tbody>
           {data.map((item, i) => {
@@ -101,8 +121,8 @@ function Product() {
                 <td>{item[0]}</td>
                 <td>{item[1]}</td>
                 <td className="text-center">
-                  <Button variant="danger" onClick={() => DeleteRow(i)}>
-                    Delete
+                  <Button variant="primary" onClick={() => DeleteRow(i)}>
+                    เลือกเมนูนี้
                   </Button>
                 </td>
               </tr>
@@ -110,6 +130,7 @@ function Product() {
           })}
         </tbody>
       </Table>
+      <center>พลังงานรวมที่ได้รับ </center>
     </>
   );
 }

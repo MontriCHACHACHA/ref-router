@@ -1,21 +1,38 @@
 import React from "react";
-import { Layout } from "./App";
+import "./Menu.js";
+import Menu from "./Menu.js";
 
-function Contact() {
+
+export function Contact() {
   return (
     <>
-    <Layout />
-      <h3>Ubon Ractchatani University</h3>
-      <div>
-        85 Sathonlamark Road 
-        <br />
-        Warin Chamrap District
-        <br />
-        Ubon Ratchathani
-        <br />
-        Thailand 34190
+    <Menu />
+    <>
+      <div className='card'>
+        <Avatar/>
+        <div className='data'>
+        <Intro/>
+        </div>
       </div>
     </>
+    </>
+  );
+}
+
+function Avatar() {
+  return  <center><img className='avatar' src='IMG_1083.JPG' width={300} alt='My Avatar'/></center>;
+}
+
+function Intro() {
+  return (
+    <center><div>
+      <h1>นายมนตรี ชะนวนกลาง</h1>
+      <p>
+        นักศึกษา คณะวิทยาศาสตร์ สาขาเทคโนโลยีสารสนเทศเพื่อการสื่อสาร
+        มหาวิทยาลัยอุบลราชธานี งานอดิเรกชอบเล่นเกม อ่านการ์ตูน นอน
+      </p>
+    </div>
+    </center>
   );
 }
 
